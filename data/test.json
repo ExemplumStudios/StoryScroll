@@ -1,0 +1,26 @@
+{ 
+    "nodes": [
+        {"id":"Block 1", "stage": 1},
+        {"id":"Block 2", "stage": 2},
+        {"id":"Block 3", "stage": 3},
+        {"id":"Block 4", "stage": 4},
+        {"id":"Block 5", "stage": 5},
+        {"id":"Block 6", "stage": 6},
+        {"id":"Block 7", "stage": 7},
+        {"id":"Block 8", "stage": 8},
+        {"id":"Block 9", "stage": 9},
+        {"id":"Block 10", "stage": 10},
+        {"id":"Block 11", "stage": 11}
+    ],
+    "links": [
+        {"source":"Block 1", "target": "Block 2"},
+        {"source":"Block 1", "target": "Block 3"},
+        {"source":"Block 3", "target": "Block 4"},
+        {"source":"Block 3", "target": "Block 5"},
+        {"source":"Block 5", "target": "Block 6"},
+        {"source":"Block 2", "target": "Block 7"},
+        {"source":"Block 7", "target": "Block 8"},
+        {"source":"Block 8", "target": "Block 9"},
+        {"source":"Block 7", "target": "Block 9"}
+    ]
+}
