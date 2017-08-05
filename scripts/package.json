@@ -1,0 +1,13 @@
+{
+  "name": "StoryScroll",
+  "version": "0.0.1",
+  "description": "A system for quickly visualizing stories.",
+  "author": "Atthar Mirza",
+  "license": "MIT",
+  "main": "storyScroll.js",
+  "dependencies": {
+    "d3": "^4.10.0",
+    "jquery": "^3.2.1"
+  },
+  "repository": {}
+}

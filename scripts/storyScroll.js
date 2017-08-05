@@ -1,3 +1,5 @@
+var d3 = require("d3");
+
 function storyScroll(width, height, spread, story) {
     //setting up canvas and defs for D3 chart
     d3.select('#chart').append('svg')
@@ -14,14 +16,6 @@ function storyScroll(width, height, spread, story) {
         .attr('markerUnits', 'strokeWidth')
         //add a shape to that marker
         .append('circle').attr('r', 3).attr('cx', 5).attr('cy', 5);
-
-    //setting up a tooltip to call later
-    var tooltip = d3.select('body').append('div')
-        .attr('id', 'tooltipNode')
-        .style('display', 'block')
-        .style('position', 'absolute')
-        .style('z-index', 10)
-        .style('visibility', 'hidden');
 
     //loading canvas into variable
     var svg = d3.select('svg');
@@ -82,15 +76,6 @@ function storyScroll(width, height, spread, story) {
             .on('start', dragStarted)
             .on('drag', dragContinued)
             .on('end', dragEnded))
-        //show tooltip when hovering over node
-            .on('mouseover', function (d) {
-                tooltip.text(d.event);
-                tooltip.style('visibility', 'visible')
-            })
-            .on('mousemove', function (d) {
-                tooltip.style('left', (d3.event.pageX));
-                tooltip.style('top', (d3.event.pageY));
-            });
 
     //use data to create svg group for text labels
     var label = svg.append('g')
@@ -114,10 +99,44 @@ function storyScroll(width, height, spread, story) {
             return d.choice;
         });
 
+    //setting up #tooltipNode DOM
+    var tooltipNode = d3.select('body').append('div')
+        .attr('id', 'tooltipNode')
+        .style('display', 'block')
+        .style('position', 'absolute')
+        .style('z-index', 10)
+        .style('visibility', 'hidden');
+
+
     //OPTIONAL add metadata to nodes:
     node.append('title').text(function (d) {
         return d.id;
     });
+
+    //setting up #tooltipNode callback functions
+    var tooltipHorizontal = function (width, d, dataRefreshType) {
+        return width/2 + d.fx - 300;
+    };
+    var tooltipVertical = function (d) {
+        return d.fy + 80;
+    };
+
+    function tooltipNodeStart(d) {
+        tooltipNode.selectAll('p').remove(); //remove any existing text in the tooltip div
+        tooltipNode.append('p').text(d.event); //add event description
+        tooltipNode.append('p').text(d.decision); //add decision question
+        tooltipNode.style('visibility', 'visible'); //show it
+        tooltipNode.style('left', tooltipHorizontal(width, d, 'dragging')).style('top', tooltipVertical(d)); //position it near node
+    };
+
+    function tooltipNodeContinued(d) {
+        tooltipNode.style('left', tooltipHorizontal(width, d, 'dragging')).style('top', tooltipVertical(d));
+    };
+
+    function tooltipNodeEnded(d) {
+        tooltipNode.style('visibility', 'hidden');
+        // tooltipNode.style('left', width/2 + d.x - 300).style('top', d.y + 80);
+    };
 
     //load simulation on nodes from data
     storySpread
@@ -156,19 +175,21 @@ function storyScroll(width, height, spread, story) {
 
         node
             .attr('cx', function (d) {
-                return d.x
+                return d.x;
             })
             .attr('cy', function (d) {
-                return d.y
+                return d.y;
             });
 
         label
             .attr('x', function (d) {
-                return d.x + 14
+                return d.x + 14;
             })
             .attr('y', function (d) {
-                return d.y + 5
+                return d.y + 5;
             });
+
+        tooltipNodeEnded(d);
     };
 
     //functions that, when called, allow nodes to be dragged
@@ -177,12 +198,20 @@ function storyScroll(width, height, spread, story) {
         //making the fixed position a starting position
         d.fx = d.x;
         d.fy = d.y;
+        tooltipNodeStart(d);
+        //tooltip.selectAll('p').remove(); //remove any existing text in the tooltip div
+        //tooltip.append('p').text(d.event); //add event description
+        //tooltip.append('p').text(d.decision); //add decision question
+        //tooltip.style('visibility', 'visible'); //show the damn thing
+        //tooltip.style('left', d.fx).style('top', (d.fy + 80)); //position it near node
     };
 
     function dragContinued(d) {
         //making the fixed position the same as the mouse position during the dragged event
         d.fx = d3.event.x;
         d.fy = d3.event.y;
+        tooltipNodeContinued(d);
+        //tooltipNode.style('left', d.fx).style('top', (d.fy + 80));
     };
 
     function dragEnded(d) {
@@ -190,5 +219,7 @@ function storyScroll(width, height, spread, story) {
         //making it so that there is no fixed position, allowing the simulation to set the position again
         d.fx = null;
         d.fy = null;
+        // tooltipNodeEnded(d);
+        //tooltipNode.style('visibility', 'hidden');
     };
 };
