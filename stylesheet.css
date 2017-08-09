@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+}
+
+#chart {
+    width: 800px;
+    height: 80vh;
+    overflow: scroll;
+    margin: 10vh auto 0;
+    border: solid 2px #e6e6e6;
+    border-radius: 7px;
+}
+
+
+/*Styles for the markers*/
+
+#arrow {
+    stroke: #e6e6e6;
+    fill: #fff;
+    stroke-width: 1;
+}
+
+
+/*Styles for all links*/
+
+.links line {
+    stroke: #e6e6e6;
+    stroke-opacity: 0.6;
+}
+
+
+/*Styles for all nodes*/
+
+.nodes circle {
+    stroke-width: 1.5px;
+}
+
+.nodes circle:hover {
+    stroke-width: 4px;
+    /*cursor: -webkit-grab;*/
+    cursor: pointer;
+}
+
+.nodes circle:active {
+    cursor: -webkit-grabbing;
+}
+
+
+/*Style for all the text (not including tooltips)*/
+
+.labels {
+    fill: #a6a6a6;
+    font-family: Abel;
+}
+
+.choices {
+    fill: #a6a6a6;
+    font-family: Abel;
+    display: none;
+}
