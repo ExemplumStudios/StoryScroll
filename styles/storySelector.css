@@ -13,3 +13,8 @@
     transition: 0.2s;
     cursor: pointer;
 }
+
+.active {
+    background-color: #e66;
+    color: white;
+}

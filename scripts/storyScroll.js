@@ -82,6 +82,9 @@ function storyScroll(width, height, spread, story) {
         .append('text')
         .text(function (d) {
             return d.choice;
+        })
+        .attr('class', function (d) {
+            return 'id' + d.source;
         });
 
 
@@ -162,6 +165,7 @@ function storyScroll(width, height, spread, story) {
         d.fx = d.x;
         d.fy = d.y;
         tooltipNodeStart(d);
+        choiceNodeStart(d);
     };
 
     function dragContinued(d) {
@@ -175,6 +179,7 @@ function storyScroll(width, height, spread, story) {
         d.fx = null;
         d.fy = null;
         tooltipNodeEnded(d);
+        choiceNodeEnded(d);
     };
 
     //setting up #tooltipNode DOM
@@ -208,5 +213,15 @@ function storyScroll(width, height, spread, story) {
     function tooltipNodeEnded(d) {
         tooltipNode.style('visibility', 'hidden');
         // tooltipNode.style('left', width - 120).style('top', window.innerHeight * 0.1);
+    };
+
+    //showing/hiding choices based on dragging
+    function choiceNodeStart(d) {
+        d3.selectAll('.id' + d.id).style('visibility', 'visible');
+        // console.log(d.id);
+    };
+
+    function choiceNodeEnded(d) {
+        d3.selectAll('.id' + d.id).style('visibility', 'hidden');
     };
 };

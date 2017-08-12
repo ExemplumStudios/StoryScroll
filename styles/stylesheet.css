@@ -24,3 +24,12 @@ body {
     border: solid 2px #e6e6e6;
     border-radius: 7px;
 }
+
+#intro {
+    width: 60%;
+    height: 50px;
+    margin: auto;
+    margin-top: calc(40vh - 25px);
+    font-size: 24px;
+    color: #a6a6a6;
+}
