@@ -1,132 +1,50 @@
 <html>
 
 <head>
-  <!--Page Setup-->
-  <title>StoryScroll</title>
-  <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
-  <link rel="stylesheet" type="text/css" href="styles/storyScroll.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <!--Page Setup-->
+    <title>StoryScroll</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="styles/storyScroll.css">
+    <link rel="stylesheet" type="text/css" href="styles/storySelector.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 
 </head>
 
 <body>
-  <div id="chart"></div>
+    <div id="chart"></div>
+    <div id="contents">
+        <div class="storySelector" id="path1">Test</div><br>
+        <div class="storySelector" id="path1">Impossible Courage</div><br>
+        <div class="storySelector" id="path1">A Day at City Year</div><br>
+    </div>
 
-  <!--StoryScroll System Setup-->
-  <script src="scripts/storyScroll.js" type="text/javascript"></script>
+    <!--StoryScroll System Setup-->
+    <script src="scripts/storyScroll.js" type="text/javascript"></script>
+    <script src="scripts/storySelector.js" type="text/javascript"></script>
 
-  <script>
-    var currentStory = {
-      "nodes": [{
-          "id": "Apartment",
-          "type": "Start",
-          "event": "The family sat together after breakfast, when something went wrong. There was a rumble, and the walls began to crack.",
-          "decision": "How did the family escape?"
-        },
-        {
-          "id": "Detention",
-          "type": "Middle",
-          "event": "The whole family trusted the smuggler, who locked them in a detention center to get more money.",
-          "decision": "What happened next?"
-        },
-        {
-          "id": "Water",
-          "type": "Middle",
-          "event": "The smuggler put you on a boat, heading to Europe.",
-          "decision": "There was a storm coming, did they call for help?"
-        },
-        {
-          "id": "Storm",
-          "type": "Middle",
-          "event": "The boat capsized in the waves, but a helicopter found you treading water.",
-          "decision": "How do you find your family?"
-        },
-        {
-          "id": "Center",
-          "type": "End",
-          "event": "You found your family in the refugee center, cold but together.",
-          "decision": "How do you get approved for asylum?"
-        },
-        {
-          "id": "Hospital",
-          "type": "End",
-          "event": "You family was seperated during the escape, the guards open fired.",
-          "decision": "How do you find your family?"
-        },
-        {
-          "id": "Caught",
-          "type": "End",
-          "event": "The boat was found by Libyan authorities, and everyone was taken back to a holding center.",
-          "decision": "How do you find your family?"
-        }
-      ],
-      "links": [{
-          "source": "Apartment",
-          "target": "Detention",
-          "choice": "A smuggler that can take everyone.",
-          "details": "He's cheaper but you don't know much about him."
-        },
-        {
-          "source": "Detention",
-          "target": "Water",
-          "choice": "Pay the ransom.",
-          "details": "You don't have enough, but if you give them everything maybe they will understand."
-        },
-        {
-          "source": "Detention",
-          "target": "Hospital",
-          "choice": "Try and escape.",
-          "details": "This is very dangerous, the guards are armed."
-        },
-        {
-          "source": "Water",
-          "target": "Storm",
-          "choice": "No.",
-          "details": "Your boat isn't designed for travel across open water."
-        },
-        {
-          "source": "Water",
-          "target": "Center",
-          "choice": "Yes.",
-          "details": "You might not be in international waters yet, you could attract danger."
-        },
-        {
-          "source": "Water",
-          "target": "Caught",
-          "choice": "Yes.",
-          "details": "You might not be in international waters yet, you could attract danger."
-        },
-        {
-          "source": "Storm",
-          "target": "Center",
-          "choice": "Hope they are at the refugee center.",
-          "details": "You couldn't see them in the rescue…they might not be there."
-        },
-        {
-          "source": "Apartment",
-          "target": "Water",
-          "choice": "A smuggler that is trustworthy.",
-          "details": "He's more expensive, your family can't come with you."
-        }
-      ]
-    };
+    <script>
+//        var currentStory =;
+//
+//        function redraw() {
+//            var heightResponsive = window.innerHeight * 0.8;
+//            var widthResponsive = window.innerWidth * 0.5;
+//
+//            d3.selectAll('svg').remove();
+//            d3.selectAll('#tooltipNode').remove();
+//
+//            storyScroll(widthResponsive, heightResponsive, 70, currentStory);
+//        }
+//
+//        redraw();
+//
+//        window.addEventListener('resize', redraw);
 
-    function redraw() {
-      var heightResponsive = window.innerHeight * 0.8;
-      var widthResponsive = window.innerWidth * 0.5;
-
-      d3.selectAll('svg').remove();
-      d3.selectAll('#tooltipNode').remove();
-
-      storyScroll(widthResponsive, heightResponsive, 70, currentStory);
-    }
-
-    redraw();
-
-    window.addEventListener('resize', redraw);
-  </script>
+    </script>
 </body>
 
 </html>

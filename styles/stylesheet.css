@@ -1,13 +1,26 @@
 body {
     margin: 0;
     font-family: Abel;
+    text-align: center;
 }
 
 #chart {
+    display: inline-block;
     width: 50vw;
     height: 80vh;
     overflow: scroll;
     margin: 10vh auto 0;
+    border: solid 2px #e6e6e6;
+    border-radius: 7px;
+}
+
+#contents {
+    display: inline-block;
+    text-align: left;
+    width: 20vw;
+    height: 80vh;
+    overflow: scroll;
+    margin: 10vh 0 0 3vw;
     border: solid 2px #e6e6e6;
     border-radius: 7px;
 }

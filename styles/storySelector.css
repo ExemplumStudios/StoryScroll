@@ -1,0 +1,15 @@
+.storySelector {
+    display: inline-block;
+    text-align: left;
+    width: auto;
+    background-color: #eee;
+    margin: 1vw 1vw 0;
+    padding: 0.5vw 1vw;
+    transition: 0.2s;
+}
+
+.storySelector:hover {
+    margin-left: 1.5vw;
+    transition: 0.2s;
+    cursor: pointer;
+}
