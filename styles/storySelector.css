@@ -6,6 +6,7 @@
     margin: 1vw 1vw 0;
     padding: 0.5vw 1vw;
     transition: 0.2s;
+    border-radius: 3px;
 }
 
 .storySelector:hover {

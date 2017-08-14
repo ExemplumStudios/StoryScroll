@@ -135,7 +135,7 @@ function storyScroll(width, height, spread, story) {
 
         choice
             .attr('x', function (d) {
-                return (d.source.x + d.target.x) / 2;
+                return (d.source.x + d.target.x) / 2 - 25;
             })
             .attr('y', function (d) {
                 return (d.source.y + d.target.y) / 2;

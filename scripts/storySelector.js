@@ -20,14 +20,20 @@ function storyLoad(url) {
     });
 };
 
-d3.select('#test').on('click', function () {
-    storyLoad('/data/test.json');
-    d3.selectAll('.storySelector').classed('active', false);
-    d3.select('#test').classed('active', true);
-});
+//d3.select('#test').on('click', function () {
+//    storyLoad('/data/test.json');
+//    d3.selectAll('.storySelector').classed('active', false);
+//    d3.select('#test').classed('active', true);
+//});
 
 d3.select('#impossibleCourage').on('click', function () {
     storyLoad('/data/impossibleCourage.json');
     d3.selectAll('.storySelector').classed('active', false);
     d3.select('#impossibleCourage').classed('active', true);
+});
+
+d3.select('#cityYear').on('click', function () {
+    storyLoad('/data/cityYear.json');
+    d3.selectAll('.storySelector').classed('active', false);
+    d3.select('#cityYear').classed('active', true);
 });
