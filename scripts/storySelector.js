@@ -1,7 +1,7 @@
 function storyLoad(url) {
     d3.json(url, function (data) {
         d3.select('#intro').remove();
-        
+
         var currentStory = data;
 
         function redraw() {
@@ -27,13 +27,13 @@ function storyLoad(url) {
 //});
 
 d3.select('#impossibleCourage').on('click', function () {
-    storyLoad('/data/impossibleCourage.json');
+    storyLoad('data/impossibleCourage.json');
     d3.selectAll('.storySelector').classed('active', false);
     d3.select('#impossibleCourage').classed('active', true);
 });
 
 d3.select('#cityYear').on('click', function () {
-    storyLoad('/data/cityYear.json');
+    storyLoad('data/cityYear.json');
     d3.selectAll('.storySelector').classed('active', false);
     d3.select('#cityYear').classed('active', true);
 });
